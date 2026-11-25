@@ -5,7 +5,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* Layout: one-page portfolio. Sticky nav, hero with orbit diagram, about, skills, one featured project that opens a full case study, contact. Placeholders are dashed so they are easy to find and replace. */
+/* Layout: one-page portfolio. Sticky nav, hero with orbit diagram, about, skills, featured projects with full case studies, contact. Placeholders are dashed so they are easy to find and replace. */
 :root{
   --bg:#f5f7fb; --surface:#ffffff; --surface2:#e9eef8; --line:#d3dbec;
   --text:#121a2e; --muted:#4f5d7d; --accent:#c4541a; --on-accent:#ffffff; --blue:#2b59d6; --ok:#0f7a6b; --ph:#fff3c9; --ph-line:#c9a227;
@@ -91,13 +91,14 @@ section h2{font-size:clamp(1.9rem,4.6vw,2.8rem);letter-spacing:-.02em;margin-bot
 .feature h3{font-size:1.65rem}
 .feature p{margin:0;color:var(--muted)}
 .feature .more{margin-top:auto;color:var(--accent);font-weight:600}
+.feature + .feature{margin-top:18px}
 .bigstat{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
 .bigstat b{font-family:var(--head);font-size:clamp(2.6rem,7vw,3.8rem);letter-spacing:-.03em;line-height:1}
 .bigstat span{color:var(--muted);font-size:.95rem}
 .ratio{display:flex;height:14px;border-radius:7px;overflow:hidden;background:var(--line)}
 .ratio i{display:block;background:var(--accent);width:9.73%}
-.soon{margin-top:20px;border:1.5px dashed var(--line);border-radius:16px;padding:20px 24px;color:var(--muted)}
-
+.wildlife-metrics{display:grid;gap:14px}
+.wildlife-metrics .bigstat b{font-size:clamp(2rem,5vw,2.8rem)}
 .contact{text-align:center;background:var(--surface);border-block:1px solid var(--line)}
 .contact h2{font-size:clamp(2.1rem,6vw,3.4rem)}
 .contact .lead{margin-inline:auto}
@@ -209,7 +210,7 @@ h3.group:first-of-type{margin-top:0}
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
-    <li><a href="#projects">Project</a></li>
+    <li><a href="#projects">Projects</a></li>
     <li><a href="#certificates">Certificates</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -271,8 +272,8 @@ h3.group:first-of-type{margin-top:0}
 </div></section>
 
 <section id="projects"><div class="wrap">
-  <h2>Project</h2>
-  <p class="lead">Select the project to open the full case study.</p>
+  <h2>Projects</h2>
+  <p class="lead">Select a project to open its case study.</p>
   <button class="feature" id="openNeo" type="button">
     <div class="shot">
       <div class="bigstat"><b>9.73%</b><span>of 90,836 NASA records are hazardous</span></div>
@@ -287,7 +288,20 @@ h3.group:first-of-type{margin-top:0}
       <span class="more">Open case study</span>
     </div>
   </button>
-  <div class="soon">More projects will appear here as I finish them.</div>
+  <button class="feature" id="openWildlife" type="button">
+    <div class="shot wildlife-metrics">
+      <div class="bigstat"><b>154</b><span>wildlife species represented</span></div>
+      <div class="bigstat"><b>~85%</b><span>accuracy reported in the project report</span></div>
+      <div class="bigstat"><b>3</b><span>key predictors highlighted</span></div>
+    </div>
+    <div class="txt">
+      <span class="mono">Machine learning · Wildlife conservation</span>
+      <h3>Wildlife Intelligence System</h3>
+      <p>A Random Forest project that uses species attributes to classify wildlife, presented through an interactive Streamlit app.</p>
+      <div class="chips"><span class="chip">Python</span><span class="chip">Random Forest</span><span class="chip">Streamlit</span></div>
+      <span class="more">Open case study</span>
+    </div>
+  </button>
 </div></section>
 
 <section id="certificates"><div class="wrap">
@@ -431,6 +445,28 @@ h3.group:first-of-type{margin-top:0}
   </div>
 </div></dialog>
 
+<dialog id="wildlifeDlg" aria-label="Wildlife conservation project case study"><button class="close" data-close aria-label="Close">×</button><div class="dlg">
+  <p class="mono">Machine learning project · Wildlife conservation</p>
+  <h3>Wildlife Intelligence System</h3>
+  <p>This project uses a Random Forest classifier trained on data covering 154 wildlife species. The supplied report describes an interactive Streamlit app for exploring species predictions and highlights the role of animal attributes in conservation-focused classification.</p>
+  <div class="chips"><span class="chip">Python</span><span class="chip">Random Forest</span><span class="chip">Streamlit</span><span class="chip">Wildlife conservation</span></div>
+
+  <h4>Reported results</h4>
+  <div class="stats">
+    <div class="stat"><b>154</b><span>species in the dataset</span></div>
+    <div class="stat"><b>~85%</b><span>accuracy reported</span></div>
+    <div class="stat"><b>~0.78</b><span>macro F1 reported</span></div>
+    <div class="stat"><b>~0.83</b><span>weighted F1 reported</span></div>
+  </div>
+  <p>These figures are taken from the project report and have not been independently re-evaluated here.</p>
+
+  <h4>What the model considers</h4>
+  <p>The report identifies geographic range, lifespan, and gestation as influential predictors. Together with the Streamlit interface, these features make the project a way to explore how species information can support conservation-related analysis.</p>
+
+  <h4>Limitations to keep in mind</h4>
+  <p>The report notes dataset size and class imbalance as limitations. Predictions based on species attributes also do not capture changing population trends, so the classifier should be treated as an exploratory project rather than a substitute for current field data or expert assessment.</p>
+</div></dialog>
+
 <dialog id="lb" aria-label="Enlarged certificate"><button class="close" data-close aria-label="Close">×</button><div class="lb"><img id="lbImg" alt=""></div></dialog>
 
 <script>
@@ -449,6 +485,9 @@ document.querySelectorAll("[data-open]").forEach(b=>b.addEventListener("click",(
 const dlg=document.getElementById("dlg");
 dlg.addEventListener("click",e=>{if(e.target===dlg||e.target.hasAttribute("data-close"))dlg.close()});
 document.getElementById("openNeo").addEventListener("click",()=>{dlg.showModal();dlg.scrollTop=0});
+const wildlifeDlg=document.getElementById("wildlifeDlg");
+wildlifeDlg.addEventListener("click",e=>{if(e.target===wildlifeDlg||e.target.hasAttribute("data-close"))wildlifeDlg.close()});
+document.getElementById("openWildlife").addEventListener("click",()=>{wildlifeDlg.showModal();wildlifeDlg.scrollTop=0});
 
 const base=[["Decision Tree",97.6,31.8,48.0],["Logistic Reg.",93.2,30.4,45.9],["Linear SVM",95.8,30.0,45.7],["Random Forest",35.4,61.6,45.0],["KNN",35.4,48.4,40.9]];
 document.getElementById("base").innerHTML="<tr><th>Model</th><th>Recall</th><th>Precision</th><th>F1</th></tr>"+base.map(r=>`<tr><td>${r[0]}</td><td><div class="bar"><i style="width:${r[1]*.9}px"></i><span>${r[1]}%</span></div></td><td><div class="bar p"><i style="width:${r[2]*.9}px"></i><span>${r[2]}%</span></div></td><td>${r[3]}%</td></tr>`).join("");
